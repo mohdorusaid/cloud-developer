@@ -97,10 +97,13 @@ import { any } from 'bluebird';
     console.log(id);
     const result= cars.filter(car=>car.id == id)
     console.log(result);
-    if(!result || result.length === 0){
+    if(result && result.length > 0){
+      return res.status(200).send(result);
+    }
+    else{
       return res.status(404).send('error');
     }
-    return res.status(200).send(result);
+   
   }
   )
 
